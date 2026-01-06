@@ -3367,6 +3367,15 @@ datum
 			fluid_b = 165
 			fluid_g = 144
 
+		blood/frogblood
+			name = "frogblood"
+			id = "frogblood"
+			description = "Colloquially known as 'frogblood', this fluid found in alien amphibians uses sulfur to bind oxygen."
+			reagent_state = LIQUID
+			fluid_r = 55
+			fluid_b = 135
+			fluid_g = 55
+
 
 		vomit
 			name = "vomit"

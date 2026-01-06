@@ -1960,7 +1960,6 @@ TYPEINFO(/datum/mutantrace/amphibian)
 	jerk = FALSE
 	mutantrace_speech_modifier = SPEECH_MODIFIER_MUTANTRACE_AMPHIBIAN
 	movement_modifier = /datum/movement_modifier/amphibian
-	var/original_blood_color = null
 	mutant_folder = 'icons/mob/amphibian.dmi'
 	mutant_organs = list(\
 		"left_eye"=/obj/item/organ/eye/beady,\
@@ -1983,7 +1982,7 @@ TYPEINFO(/datum/mutantrace/amphibian)
 	r_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/amphibian/right
 	l_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/amphibian/left
 	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_SKINTONE | HAS_NO_EYES | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS)
-	blood_color = "#22EE99"
+	blood_id = "frogblood"
 
 	ghost_icon_state = "ghost-amphibian"
 
@@ -2080,7 +2079,6 @@ TYPEINFO(/datum/mutantrace/amphibian/shelter)
 	r_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/shelterfrog/right
 	l_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/shelterfrog/left
 	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_SKINTONE | HAS_NO_EYES | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS)
-	blood_color = "#91b978"
 
 	ghost_icon_state = "ghost-shelterfrog"
 

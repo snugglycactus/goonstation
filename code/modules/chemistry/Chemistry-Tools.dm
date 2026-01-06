@@ -1171,7 +1171,7 @@ proc/ui_describe_reagents(atom/A)
 	var/makes_noise_when_full = TRUE //here so the tiny ones don't burp on creation lol
 	var/angry = FALSE
 	var/angry_timer = 15
-	var/list/convertible_reagents = list("blood","bloodc","bloody_mary","bloody_scary","hemolymph", "viscerite_viscera")
+	var/list/convertible_reagents = list("blood","bloodc","bloody_mary","bloody_scary","hemolymph", "viscerite_viscera", "frogblood")
 
 	New()
 		START_TRACKING
