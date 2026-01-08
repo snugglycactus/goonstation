@@ -1961,7 +1961,7 @@ TYPEINFO(/datum/mutantrace/amphibian)
 	mutantrace_speech_modifier = SPEECH_MODIFIER_MUTANTRACE_AMPHIBIAN
 	movement_modifier = /datum/movement_modifier/amphibian
 	mutant_folder = 'icons/mob/amphibian.dmi'
-
+	blood_id = "frogblood"
 	mutant_organs = list(\
 		"left_eye"=/obj/item/organ/eye/beady,\
 		"right_eye"=/obj/item/organ/eye/beady,\

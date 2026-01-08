@@ -195,3 +195,24 @@
 	can_scramble = 0
 	curable_by_mutadone = 0
 	reclaim_fail = 100
+
+
+/datum/bioEffect/mutantrace/amphibian
+	name = "Abzuian Genetics"
+	desc = "Morphs the subject into a... frog-salamander thingy."
+	id = "amphibian"
+	mutantrace_option = "Amphibian"
+	mutantrace_path = /datum/mutantrace/amphibian
+	msgGain = "" // Frogs have enough message spam when transforming as is
+	msgLose = ""
+	occur_in_genepools = 0
+	probability = 0
+	scanner_visibility = 0
+	can_research = 0
+	can_make_injector = 0
+	can_copy = 0
+	can_reclaim = 0
+	can_scramble = 0
+	curable_by_mutadone = 0
+	reclaim_fail = 100
+	icon_state  = "blank"
