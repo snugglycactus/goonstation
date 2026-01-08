@@ -196,7 +196,6 @@
 	curable_by_mutadone = 0
 	reclaim_fail = 100
 
-
 /datum/bioEffect/mutantrace/amphibian
 	name = "Abzuian Genetics"
 	desc = "Morphs the subject into a... frog-salamander thingy."
