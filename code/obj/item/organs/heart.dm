@@ -192,6 +192,8 @@ TYPEINFO(/obj/item/organ/heart/cyber)
 	name = "amphibian heart"
 	desc = "A heart you ripped out of an amphibian. Grody."
 	icon_state = "heart_amphibian"
+	blood_reagent = "frogblood"
+	blood_id = "frogblood"
 
 /obj/item/organ/heart/skeleton
 	name = "skeleton heart"
@@ -199,6 +201,7 @@ TYPEINFO(/obj/item/organ/heart/cyber)
 	icon_state = "heart_skeleton"
 	default_material = "bone"
 	blood_reagent = "calcium"
+	blood_id = "calcium"
 
 /obj/item/organ/heart/martian
 	name = "lavender heap"
