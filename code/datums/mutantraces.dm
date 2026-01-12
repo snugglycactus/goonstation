@@ -2059,7 +2059,7 @@ TYPEINFO(/datum/mutantrace/amphibian/shelter)
 	human_compatible = 1
 	jerk = FALSE
 	var/permanent = 0
-	race_mutation = /datum/bioEffect/mutantrace/amphibian/shelteramphibian
+	race_mutation = /datum/bioEffect/mutantrace/amphibian/shelterfrog
 	mutant_folder = 'icons/mob/shelterfrog.dmi'
 	mutant_organs = list(\
 		"left_eye"=/obj/item/organ/eye/shelterfrog,\

@@ -205,10 +205,10 @@
 	msgGain = ""
 	msgLose = ""
 
-/datum/bioEffect/mutantrace/shelterfrog
+/datum/bioEffect/mutantrace/amphibian/shelterfrog
 	name = "Shelter-batrachian Genetics"
 	desc = "Turns the subject into a... weirder frog-salamander thing."
-	id = "shelteramphibian"
+	id = "shelterfrog"
 	mutantrace_option = "Shelter Amphibian"
 	mutantrace_path = /datum/mutantrace/amphibian/shelterfrog
 	msgGain = ""
