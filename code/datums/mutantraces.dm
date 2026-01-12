@@ -2003,6 +2003,11 @@ TYPEINFO(/datum/mutantrace/amphibian)
 			M.bioHolder.AddEffect("vowelitis", do_stability = FALSE, scannable = FALSE, innate = TRUE)
 			M.bioHolder.AddEffect("accent_frog", do_stability = FALSE, scannable = FALSE, innate = TRUE)
 			src.mob.vis_contents += list(src.distort_uniform,src.distort_shoes)
+		if (!mob.sims)
+			mob.sims = new /datum/simsHolder(mob)
+			mob.sims.addMotive(/datum/simsMotive/hunger/thirst) // allows dehydration for amphibians on classic
+			mob.sims.add_hud()
+
 
 	disposing()
 		if(ishuman(src.mob))
@@ -2011,6 +2016,9 @@ TYPEINFO(/datum/mutantrace/amphibian)
 			src.mob.bioHolder.RemoveEffect("vowelitis")
 			src.mob.bioHolder.RemoveEffect("accent_frog")
 			src.mob.vis_contents -= list(src.distort_uniform,src.distort_shoes)
+		if (!mob.sims)
+			mob.sims = new /datum/simsHolder(mob)
+			mob.sims.removeMotive("Thirst")
 		..()
 
 	emote(act, voluntary)
@@ -2050,6 +2058,20 @@ TYPEINFO(/datum/mutantrace/amphibian)
 		else if (istype(worn, /obj/item/clothing/shoes))
 			output += filter(type="displace", render_source = src.distort_shoes.render_target, size = 127)
 		return output
+
+	onLife(var/mult = 1)
+		if (src.mob.hasStatus("poisoned")) // allows frogs to "tox out" (amphibian reaction to environmental toxins)
+			if(prob(20))
+				src.mob.setStatusMin("knockdown", 4 SECONDS)
+				src.mob.visible_message(SPAN_ALERT("<b>[mob]'s legs spasm horribly!</b>"))
+			if(prob(10))
+				src.mob.emote(pick("twitch", "twitch_v", "tremble"))
+		if(src.mob.sims.getValue("Thirst") < 10.0) // frog need water. nuff said
+			if (prob(25))
+				src.mob.emote(pick("choke","wheeze"))
+				src.mob.take_oxygen_deprivation(10)
+			if (prob(8))
+				src.mob.visible_message(SPAN_ALERT("[mob] conspicuously wrinkles up."))
 
 TYPEINFO(/datum/mutantrace/amphibian/shelter)
 	icon = 'icons/mob/shelterfrog.dmi'
