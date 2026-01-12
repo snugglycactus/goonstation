@@ -791,7 +791,7 @@ ADMIN_INTERACT_PROCS(/obj/fluid, proc/admin_clear_fluid)
 		entered_group = 0
 
 	//BLOODSTAINS
-	if (F.group.master_reagent_id == "blood" || F.group.master_reagent_id == "bloodc" || F.group.master_reagent_id == "hemolymph") // Replace with a blood reagent check proc
+	if (F.group.master_reagent_id == "blood" || F.group.master_reagent_id == "bloodc" || F.group.master_reagent_id == "hemolymph" || F.group.master_reagent_id == "frogblood") // Replace with a blood reagent check proc
 		if (src.lying)
 			if (src.wear_suit)
 				src.wear_suit.add_blood(F)

@@ -195,3 +195,22 @@
 	can_scramble = 0
 	curable_by_mutadone = 0
 	reclaim_fail = 100
+
+/datum/bioEffect/mutantrace/amphibian
+	name = "Batrachian Genetics"
+	desc = "Turns the subject into a... frog-salamander thing."
+	id = "amphibian"
+	mutantrace_option = "Amphibian"
+	mutantrace_path = /datum/mutantrace/amphibian
+	msgGain = ""
+	msgLose = ""
+
+/datum/bioEffect/mutantrace/shelterfrog
+	name = "Shelter-batrachian Genetics"
+	desc = "Turns the subject into a... weirder frog-salamander thing."
+	id = "shelteramphibian"
+	mutantrace_option = "Shelter Amphibian"
+	mutantrace_path = /datum/mutantrace/amphibian/shelterfrog
+	msgGain = ""
+	msgLose = ""
+	probability = 10

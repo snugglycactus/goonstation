@@ -192,6 +192,7 @@ TYPEINFO(/obj/item/organ/heart/cyber)
 	name = "amphibian heart"
 	desc = "A heart you ripped out of an amphibian. Grody."
 	icon_state = "heart_amphibian"
+	blood_id = "frogblood"
 
 /obj/item/organ/heart/skeleton
 	name = "skeleton heart"
