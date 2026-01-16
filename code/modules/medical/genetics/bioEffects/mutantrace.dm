@@ -206,7 +206,7 @@
 	msgLose = ""
 
 /datum/bioEffect/mutantrace/amphibian/shelterfrog
-	name = "Shelter-batrachian Genetics"
+	name = "Shelter-Batrachian Genetics"
 	desc = "Turns the subject into a... weirder frog-salamander thing."
 	id = "shelterfrog"
 	mutantrace_option = "Shelter Amphibian"

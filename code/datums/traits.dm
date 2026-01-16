@@ -1478,6 +1478,15 @@ TYPEINFO(/datum/trait/partyanimal)
 			H.default_mutantrace = /datum/mutantrace/human
 			H.set_mutantrace(H.default_mutantrace)
 
+/datum/trait/amphibian
+	name = "Amphibian"
+	icon_state = "amphibianT"
+	desc = "It ain't easy being green."
+	id = "amphibian"
+	points = -3 // ?? how do i balance frogs
+	category = list("species")
+	mutantRace = /datum/mutantrace/amphibian
+
 /datum/trait/super_slips
 	name = "Slipping Hazard"
 	id = "super_slips"
