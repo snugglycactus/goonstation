@@ -565,13 +565,11 @@ TYPEINFO(/obj/item/organ/eye/cyber/monitor)
 	name = "shelterfrog eye"
 	desc = "Oh, wow, this thing is huge. Like, larger than its owner's brain huge."
 	icon_state = "eye-shelterfrog"
-	change_iris = 0
 
 /obj/item/organ/eye/beady
 	name = "beady eye"
 	desc = "Looks like you're keeping a beady eye on this thing."
 	icon_state = "eye-beady"
-	change_iris = 0
 
 /obj/item/organ/eye/glass
 	name = "glass eye"
