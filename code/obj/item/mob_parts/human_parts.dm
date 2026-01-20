@@ -1455,12 +1455,12 @@
 //////  PARENT  //////
 
 /obj/item/parts/human_parts/arm/mutant/amphibian
-	icon = 'icons/mob/amphibian.dmi'
-	partIcon = 'icons/mob/amphibian.dmi'
+	icon = 'icons/mob/amphibian/jade.dmi'
+	partIcon = 'icons/mob/amphibian/jade.dmi'
 
 /obj/item/parts/human_parts/leg/mutant/amphibian
-	icon = 'icons/mob/amphibian.dmi'
-	partIcon = 'icons/mob/amphibian.dmi'
+	icon = 'icons/mob/amphibian/jade.dmi'
+	partIcon = 'icons/mob/amphibian/jade.dmi'
 
 ////// ACTUAL AMPHIBIAN LIMBS //////
 /obj/item/parts/human_parts/arm/mutant/amphibian/left
@@ -1501,12 +1501,12 @@
 //////  PARENT  //////
 
 /obj/item/parts/human_parts/arm/mutant/shelterfrog
-	icon = 'icons/mob/shelterfrog.dmi'
-	partIcon = 'icons/mob/shelterfrog.dmi'
+	icon = 'icons/mob/amphibian/shelterfrog.dmi'
+	partIcon = 'icons/mob/amphibian/shelterfrog.dmi'
 
 /obj/item/parts/human_parts/leg/mutant/shelterfrog
-	icon = 'icons/mob/shelterfrog.dmi'
-	partIcon = 'icons/mob/shelterfrog.dmi'
+	icon = 'icons/mob/amphibian/shelterfrog.dmi'
+	partIcon = 'icons/mob/amphibian/shelterfrog.dmi'
 
 ////// ACTUAL SHELTERFROG LIMBS //////
 /obj/item/parts/human_parts/arm/mutant/shelterfrog/left

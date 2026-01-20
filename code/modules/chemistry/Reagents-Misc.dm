@@ -926,6 +926,12 @@ datum
 				growth_tick.health_change += 0.66
 				growth_tick.water_consumption += 4
 
+			on_mob_life(var/mob/M, var/mult = 1)
+				if (isfrog(M))
+					M.changeStatus("poisoned", 3 SECONDS * mult)
+				..()
+				return
+
 		diethylamine
 			name = "diethylamine"
 			id = "diethylamine"
@@ -1204,6 +1210,14 @@ datum
 				if(method == TOUCH)
 					M.clean_forensic()
 					M.delStatus("marker_painted")
+					if (isfrog(M))
+						M.changeStatus("poisoned", 2 SECONDS * mult)
+
+					on_mob_life(var/mob/M, var/mult = 1)
+				if (isfrog(M))
+					M.changeStatus("poisoned", 8 SECONDS * mult)
+				..()
+				return
 
 		luminol // OOC. Weaseldood. oh that stuff from CSI, the glowy blue shit that they spray on blood
 			name = "luminol"

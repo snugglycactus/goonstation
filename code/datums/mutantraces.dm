@@ -1940,19 +1940,24 @@ TYPEINFO(/datum/mutantrace/cat/bingus)
 
 
 /obj/effect/rt/frog_distorts
-	icon = 'icons/mob/shelterfrog.dmi'
+	icon = 'icons/mob/amphibian/shelterfrog.dmi'
 /obj/effect/rt/frog_distorts/uniform // frogs are wide
 	icon_state = "suit_distort"
 /obj/effect/rt/frog_distorts/shoes // frogs have long feet
 	icon_state = "shoes_distort"
 
 TYPEINFO(/datum/mutantrace/amphibian)
-	icon = 'icons/mob/amphibian.dmi'
+	icon = 'icons/mob/amphibian/jade.dmi'
+	special_styles = list("shelterfrog" = 'icons/mob/amphibian/shelterfrog.dmi',
+	"lichen" = 'icons/mob/amphibian/lichen.dmi',
+	"russet" = 'icons/mob/amphibian/russet.dmi',
+	"jade" = 'icons/mob/amphibian/jade.dmi')
 /datum/mutantrace/amphibian
 	name = "amphibian"
 	icon_state = "body_m"
 	firevuln = 1.3
 	brutevuln = 0.7
+	toxvuln = 2
 	human_compatible = 0
 	uses_human_clothes = 1
 	aquatic = 1
@@ -1962,7 +1967,7 @@ TYPEINFO(/datum/mutantrace/amphibian)
 	movement_modifier = /datum/movement_modifier/amphibian
 	var/original_blood_color = null
 	race_mutation = /datum/bioEffect/mutantrace/amphibian
-	mutant_folder = 'icons/mob/amphibian.dmi'
+	mutant_folder = 'icons/mob/amphibian/jade.dmi'
 	mutant_organs = list(\
 		"left_eye"=/obj/item/organ/eye/beady,\
 		"right_eye"=/obj/item/organ/eye/beady,\
@@ -1986,7 +1991,6 @@ TYPEINFO(/datum/mutantrace/amphibian)
 	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_SKINTONE | HAS_HUMAN_EYES | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS)
 	eye_state = "eyes_amphibian"
 	blood_id = "frogblood"
-
 	ghost_icon_state = "ghost-amphibian"
 
 	var/clothes_filters_active = TRUE // see cow for explanation
@@ -2073,7 +2077,7 @@ TYPEINFO(/datum/mutantrace/amphibian)
 				src.mob.visible_message(SPAN_ALERT("[mob] conspicuously wrinkles up."))
 
 TYPEINFO(/datum/mutantrace/amphibian/shelter)
-	icon = 'icons/mob/shelterfrog.dmi'
+	icon = 'icons/mob/amphibian/shelterfrog.dmi'
 /datum/mutantrace/amphibian/shelter
 	name = "Shelter Amphibian"
 	icon_state = "body_m"
@@ -2081,7 +2085,7 @@ TYPEINFO(/datum/mutantrace/amphibian/shelter)
 	jerk = FALSE
 	var/permanent = 0
 	race_mutation = /datum/bioEffect/mutantrace/amphibian/shelterfrog
-	mutant_folder = 'icons/mob/shelterfrog.dmi'
+	mutant_folder = 'icons/mob/amphibian/shelterfrog.dmi'
 	mutant_organs = list(\
 		"left_eye"=/obj/item/organ/eye/shelterfrog,\
 		"right_eye"=/obj/item/organ/eye/shelterfrog,\
