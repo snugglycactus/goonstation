@@ -1951,6 +1951,7 @@ TYPEINFO(/datum/mutantrace/amphibian)
 	special_styles = list("shelterfrog" = 'icons/mob/amphibian/shelterfrog.dmi',
 	"lichen" = 'icons/mob/amphibian/lichen.dmi',
 	"russet" = 'icons/mob/amphibian/russet.dmi',
+	"toad" = 'icons/mob/amphibian/toad.dmi',
 	"jade" = 'icons/mob/amphibian/jade.dmi')
 /datum/mutantrace/amphibian
 	name = "amphibian"
