@@ -205,12 +205,21 @@
 	msgGain = ""
 	msgLose = ""
 
-/datum/bioEffect/mutantrace/amphibian/shelterfrog
+/datum/bioEffect/mutantrace/shelterfrog
 	name = "Shelter-Batrachian Genetics"
 	desc = "Turns the subject into a... weirder frog-salamander thing."
 	id = "shelterfrog"
 	mutantrace_option = "Shelter Amphibian"
-	mutantrace_path = /datum/mutantrace/amphibian/shelter
+	mutantrace_path = /datum/mutantrace/shelter
 	msgGain = ""
 	msgLose = ""
-	probability = 10
+	occur_in_genepools = 0
+	probability = 0
+	scanner_visibility = 0
+	can_research = 0
+	can_make_injector = 0
+	can_copy = 0
+	can_reclaim = 0
+	can_scramble = 0
+	curable_by_mutadone = 0
+	reclaim_fail = 100

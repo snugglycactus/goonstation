@@ -2003,7 +2003,6 @@ TYPEINFO(/datum/mutantrace/amphibian)
 	on_attach(var/mob/living/carbon/human/M)
 		..()
 		if(ishuman(src.mob))
-			M.bioHolder.AddEffect("mattereater", do_stability = FALSE, scannable = FALSE, innate = TRUE)
 			M.bioHolder.AddEffect("jumpy", do_stability = FALSE, scannable = FALSE, innate = TRUE)
 			M.bioHolder.AddEffect("accent_frog", do_stability = FALSE, scannable = FALSE, innate = TRUE)
 			src.mob.vis_contents += list(src.distort_uniform,src.distort_shoes)
@@ -2015,7 +2014,6 @@ TYPEINFO(/datum/mutantrace/amphibian)
 
 	disposing()
 		if(ishuman(src.mob))
-			src.mob.bioHolder.RemoveEffect("mattereater")
 			src.mob.bioHolder.RemoveEffect("jumpy")
 			src.mob.bioHolder.RemoveEffect("accent_frog")
 			src.mob.vis_contents -= list(src.distort_uniform,src.distort_shoes)
@@ -2076,51 +2074,104 @@ TYPEINFO(/datum/mutantrace/amphibian)
 			if (prob(8))
 				src.mob.visible_message(SPAN_ALERT("[mob] conspicuously wrinkles up."))
 
-TYPEINFO(/datum/mutantrace/amphibian/shelter)
+TYPEINFO(/datum/mutantrace/shelter)
 	icon = 'icons/mob/amphibian/shelterfrog.dmi'
-/datum/mutantrace/amphibian/shelter
+/datum/mutantrace/shelter
 	name = "Shelter Amphibian"
 	icon_state = "body_m"
 	human_compatible = 1
 	jerk = FALSE
 	var/permanent = 0
-	race_mutation = /datum/bioEffect/mutantrace/amphibian/shelterfrog
+	race_mutation = /datum/bioEffect/mutantrace/shelterfrog
 	mutant_folder = 'icons/mob/amphibian/shelterfrog.dmi'
-	mutant_organs = list(\
-		"left_eye"=/obj/item/organ/eye/shelterfrog,\
-		"right_eye"=/obj/item/organ/eye/shelterfrog,\
-		"heart"=/obj/item/organ/heart/amphibian,\
-		"appendix"=/obj/item/organ/appendix/amphibian,\
-		"brain"=/obj/item/organ/brain/amphibian,\
-		"intestines"=/obj/item/organ/intestines/amphibian,\
-		"left_kidney"=/obj/item/organ/kidney/amphibian/left,\
-		"right_kidney"=/obj/item/organ/kidney/amphibian/right,\
-		"liver"=/obj/item/organ/liver/amphibian,\
-		"left_lung"=/obj/item/organ/lung/amphibian/left,\
-		"right_lung"=/obj/item/organ/lung/amphibian/right,\
-		"pancreas"=/obj/item/organ/pancreas/amphibian,\
-		"spleen"=/obj/item/organ/spleen/amphibian,\
-		"stomach"=/obj/item/organ/stomach/amphibian)
 	special_head = HEAD_SHELTER
 	r_limb_arm_type_mutantrace = /obj/item/parts/human_parts/arm/mutant/shelterfrog/right
 	l_limb_arm_type_mutantrace = /obj/item/parts/human_parts/arm/mutant/shelterfrog/left
 	r_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/shelterfrog/right
 	l_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/shelterfrog/left
 	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_SKINTONE | HAS_NO_EYES | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS)
-	eye_state = "eyes_shelterfrog"
 	ghost_icon_state = "ghost-shelterfrog"
+
+	say_verb()
+		return "croaks"
 
 	on_attach(var/mob/living/carbon/human/M)
 		..()
 		if(ishuman(src.mob))
 			M.bioHolder.AddEffect("mattereater", do_stability = FALSE, scannable = FALSE, innate = TRUE)
+			M.bioHolder.AddEffect("jumpy", do_stability = FALSE, scannable = FALSE, innate = TRUE)
+			M.bioHolder.AddEffect("accent_frog", do_stability = FALSE, scannable = FALSE, innate = TRUE)
 			M.bioHolder.AddEffect("vowelitis", do_stability = FALSE, scannable = FALSE, innate = TRUE)
+			src.mob.vis_contents += list(src.distort_uniform,src.distort_shoes)
+		if (!mob.sims)
+			mob.sims = new /datum/simsHolder(mob)
+			mob.sims.addMotive(/datum/simsMotive/hunger/thirst) // allows dehydration for amphibians on classic
+			mob.sims.add_hud()
+
 
 	disposing()
 		if(ishuman(src.mob))
 			src.mob.bioHolder.RemoveEffect("mattereater")
+			src.mob.bioHolder.RemoveEffect("jumpy")
+			src.mob.bioHolder.RemoveEffect("accent_frog")
 			src.mob.bioHolder.RemoveEffect("vowelitis")
+			src.mob.vis_contents -= list(src.distort_uniform,src.distort_shoes)
+		if (!mob.sims)
+			mob.sims = new /datum/simsHolder(mob)
+			mob.sims.removeMotive("Thirst") // make sure this doesn't get rid of thirst on RP, consider specifying not rp_mode
 		..()
+
+	emote(act, voluntary)
+		var/message = null
+		var/used_name = GET_ATOM_PROPERTY(src.mob, PROP_MOB_NOEXAMINE) >= 3 ? "Someone" : src.mob
+		switch (act)
+			if ("scream","howl","laugh")
+				if (src.mob.emote_check(voluntary, 3 SECONDS))
+					message = SPAN_ALERT("<B>[used_name] makes an awful noise!</B>")
+					playsound(src.mob, pick('sound/voice/screams/frogscream1.ogg','sound/voice/screams/frogscream3.ogg','sound/voice/screams/frogscream4.ogg'), 60, 1, channel=VOLUME_CHANNEL_EMOTE)
+					return message
+
+			if("burp","fart","gasp")
+				if (src.mob.emote_check(voluntary, 1 SECOND))
+					message = "<B>[used_name]</B> croaks."
+					playsound(src.mob, 'sound/voice/farts/frogfart.ogg', 60, 1, channel=VOLUME_CHANNEL_EMOTE)
+					return message
+
+			if ("clothes")
+				src.clothes_filters_active = !src.clothes_filters_active
+				boutput(src.mob, src.clothes_filters_active ? "Amphibian-specific clothes filters activated." : "Disabled amphibian-specific clothes filters.")
+				src.mob.update_clothing()
+				message = "<B>[used_name]</B> adjusts [his_or_her(src.mob)] clothing."
+				return message
+			else
+				..()
+
+	apply_clothing_filters(var/obj/item/worn)
+		. = ..()
+		if (!src.clothes_filters_active) return
+		var/list/output = list()
+
+		if (istype(worn, /obj/item/clothing/suit))
+			output += filter(type="displace", render_source = src.distort_uniform.render_target, size = 127)
+		else if (istype(worn, /obj/item/clothing/under))
+			output += filter(type="displace", render_source = src.distort_uniform.render_target, size = 127)
+		else if (istype(worn, /obj/item/clothing/shoes))
+			output += filter(type="displace", render_source = src.distort_shoes.render_target, size = 127)
+		return output
+
+	onLife(var/mult = 1)
+		if (src.mob.hasStatus("poisoned")) // allows frogs to "tox out" (amphibian reaction to environmental toxins)
+			if(prob(20))
+				src.mob.setStatusMin("knockdown", 4 SECONDS)
+				src.mob.visible_message(SPAN_ALERT("<b>[mob]'s legs spasm horribly!</b>"))
+			if(prob(10))
+				src.mob.emote(pick("twitch", "twitch_v", "tremble"))
+		if(src.mob.sims.getValue("Thirst") < 10.0) // frog need water. nuff said
+			if (prob(25))
+				src.mob.emote(pick("choke","wheeze"))
+				src.mob.take_oxygen_deprivation(10)
+			if (prob(8))
+				src.mob.visible_message(SPAN_ALERT("[mob] conspicuously wrinkles up."))
 
 TYPEINFO(/datum/mutantrace/kudzu)
 	icon = 'icons/mob/kudzu.dmi'
