@@ -2079,9 +2079,18 @@ TYPEINFO(/datum/mutantrace/shelter)
 /datum/mutantrace/shelter
 	name = "Shelter Amphibian"
 	icon_state = "body_m"
+	firevuln = 1.3
+	brutevuln = 0.7
+	toxvuln = 2
 	human_compatible = 1
+	uses_human_clothes = 1
+	aquatic = 1
+	voice_name = "amphibian"
 	jerk = FALSE
 	var/permanent = 0
+	mutantrace_speech_modifier = SPEECH_MODIFIER_MUTANTRACE_AMPHIBIAN
+	movement_modifier = /datum/movement_modifier/amphibian
+	var/original_blood_color = null
 	race_mutation = /datum/bioEffect/mutantrace/shelterfrog
 	mutant_folder = 'icons/mob/amphibian/shelterfrog.dmi'
 	special_head = HEAD_SHELTER
