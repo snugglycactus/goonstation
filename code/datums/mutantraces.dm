@@ -1948,11 +1948,10 @@ TYPEINFO(/datum/mutantrace/cat/bingus)
 
 TYPEINFO(/datum/mutantrace/amphibian)
 	icon = 'icons/mob/amphibian/jade.dmi'
-	special_styles = list("shelterfrog" = 'icons/mob/amphibian/shelterfrog.dmi',
+	special_styles = list("jade" = 'icons/mob/amphibian/jade.dmi',
 	"lichen" = 'icons/mob/amphibian/lichen.dmi',
 	"russet" = 'icons/mob/amphibian/russet.dmi',
-	"toad" = 'icons/mob/amphibian/toad.dmi',
-	"jade" = 'icons/mob/amphibian/jade.dmi')
+	"mint" = 'icons/mob/amphibian/mint.dmi')
 /datum/mutantrace/amphibian
 	name = "amphibian"
 	icon_state = "body_m"
@@ -2107,11 +2106,21 @@ TYPEINFO(/datum/mutantrace/amphibian/shelter)
 	l_limb_arm_type_mutantrace = /obj/item/parts/human_parts/arm/mutant/shelterfrog/left
 	r_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/shelterfrog/right
 	l_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/shelterfrog/left
-	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_SKINTONE | HAS_HUMAN_EYES | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS)
+	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_SKINTONE | HAS_NO_EYES | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS)
 	eye_state = "eyes_shelterfrog"
-
-
 	ghost_icon_state = "ghost-shelterfrog"
+
+	on_attach(var/mob/living/carbon/human/M)
+		..()
+		if(ishuman(src.mob))
+			M.bioHolder.AddEffect("mattereater", do_stability = FALSE, scannable = FALSE, innate = TRUE)
+			M.bioHolder.AddEffect("vowelitis", do_stability = FALSE, scannable = FALSE, innate = TRUE)
+
+	disposing()
+		if(ishuman(src.mob))
+			src.mob.bioHolder.RemoveEffect("mattereater")
+			src.mob.bioHolder.RemoveEffect("vowelitis")
+		..()
 
 TYPEINFO(/datum/mutantrace/kudzu)
 	icon = 'icons/mob/kudzu.dmi'
