@@ -2101,6 +2101,10 @@ TYPEINFO(/datum/mutantrace/shelter)
 	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_SKINTONE | HAS_NO_EYES | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS)
 	ghost_icon_state = "ghost-shelterfrog"
 
+	var/clothes_filters_active = TRUE // see cow for explanation
+	var/obj/effect/rt/frog_distorts/uniform/distort_uniform = new
+	var/obj/effect/rt/frog_distorts/shoes/distort_shoes = new
+
 	say_verb()
 		return "croaks"
 

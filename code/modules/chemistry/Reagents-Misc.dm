@@ -1211,7 +1211,7 @@ datum
 					M.clean_forensic()
 					M.delStatus("marker_painted")
 					if (isfrog(M))
-						M.changeStatus("poisoned", 2 SECONDS)
+						M.changeStatus("poisoned", 10 SECONDS)
 
 			on_mob_life(var/mob/M, var/mult = 1)
 				if (isfrog(M))
